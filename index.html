@@ -20,7 +20,7 @@
       --yellow: #e3b341;
       --purple: #bc8cff;
       --text: #e6edf3;
-      --text2: #8b949e;
+      --text2: #cdd9e5;
       --text3: #6e7681;
       --radius: 12px;
       --shadow: 0 8px 32px rgba(0,0,0,0.4);
@@ -34,11 +34,11 @@
       direction: rtl;
     }
 
-    /* HERO */
+    /* ── HERO (stats + watchlist inside) ── */
     .hero {
       background: linear-gradient(160deg, #0d1117 0%, #1a2332 50%, #0d1117 100%);
       border-bottom: 1px solid var(--border);
-      padding: 48px 24px 36px;
+      padding: 44px 24px 36px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -50,7 +50,6 @@
       background: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(88,166,255,0.12) 0%, transparent 70%);
       pointer-events: none;
     }
-    .hero-date { font-size: 0.8rem; color: var(--text3); letter-spacing: 2px; margin-bottom: 10px; }
     .hero h1 {
       font-size: clamp(2rem, 6vw, 3.2rem);
       font-weight: 800;
@@ -60,45 +59,51 @@
       background-clip: text;
       margin-bottom: 8px;
     }
-    .hero-sub { color: var(--text2); font-size: 1rem; }
+    .subtitle { font-size: 0.85rem; color: var(--text3); letter-spacing: 1.5px; margin-bottom: 24px; }
 
-    /* STATS */
-    .stats-bar {
+    /* stats chips inside hero */
+    .stats-row {
       display: flex;
       justify-content: center;
-      gap: 24px;
+      gap: 16px;
       flex-wrap: wrap;
-      padding: 20px 24px;
-      border-bottom: 1px solid var(--border);
-      background: var(--bg2);
+      margin-bottom: 20px;
     }
-    .stat { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-    .stat-num { font-size: 1.6rem; font-weight: 700; color: var(--text); }
-    .stat-num.green { color: var(--green); }
-    .stat-num.red { color: var(--red); }
-    .stat-label { font-size: 0.78rem; color: var(--text3); font-weight: 500; }
-    .stat-divider { width: 1px; background: var(--border); align-self: stretch; margin: 4px 0; }
+    .stat-chip {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 20px;
+      font-size: 0.9rem;
+      color: var(--text2);
+      font-weight: 500;
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .stat-chip span { font-size: 1.3rem; font-weight: 700; color: var(--text); }
+    .stat-chip span.green { color: var(--green); }
+    .stat-chip span.red { color: var(--red); }
 
-    /* WATCHLIST */
-    .watchlist-wrap { text-align: center; padding: 20px 24px 0; }
-    .watchlist-btn {
+    /* watchlist button */
+    .tv-watchlist-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       background: linear-gradient(135deg, var(--accent2), #388bfd);
       color: #fff;
       text-decoration: none;
-      padding: 11px 24px;
+      padding: 11px 28px;
       border-radius: 8px;
       font-size: 0.95rem;
       font-weight: 600;
       transition: all 0.2s;
       box-shadow: 0 4px 16px rgba(88,166,255,0.25);
     }
-    .watchlist-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(88,166,255,0.4); }
+    .tv-watchlist-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(88,166,255,0.4); }
 
-    /* PREAMBLE */
-    .preamble-wrap { max-width: 960px; margin: 28px auto; padding: 0 20px; }
+    /* ── PREAMBLE ── */
+    .preamble-wrap { max-width: 868px; margin: 28px auto; padding: 0 24px; }
     .preamble {
       background: var(--bg2);
       border: 1px solid var(--border);
@@ -112,24 +117,24 @@
     .preamble p { margin-bottom: 14px; }
     .preamble p:last-child { margin-bottom: 0; }
 
-    /* DISCLAIMER */
-    .disclaimer { max-width: 960px; margin: 0 auto 28px; padding: 0 20px; }
+    /* ── DISCLAIMER ── */
+    .disclaimer { max-width: 868px; margin: 0 auto 28px; padding: 0 24px; }
     .disclaimer-inner {
-      background: rgba(248,81,73,0.07);
-      border: 1px solid rgba(248,81,73,0.25);
+      background: rgba(201,162,39,0.07);
+      border: 1px solid rgba(201,162,39,0.3);
       border-radius: var(--radius);
       padding: 14px 20px;
-      font-size: 0.85rem;
-      color: var(--text3);
+      font-size: 0.88rem;
+      color: rgb(201,162,39);
       line-height: 1.6;
     }
-    .disclaimer-inner strong { color: var(--red); }
+    .disclaimer-inner strong { color: rgb(201,162,39); }
 
-    /* SECTION TITLE */
+    /* ── SECTION TITLE ── */
     .section-title {
-      max-width: 960px;
+      max-width: 1300px;
       margin: 0 auto 16px;
-      padding: 0 20px;
+      padding: 0 24px;
       font-size: 0.85rem;
       font-weight: 600;
       color: var(--text3);
@@ -141,20 +146,20 @@
     }
     .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-    /* GRID — 2 columns max */
+    /* ── GRID — 2 columns, 1300px wide ── */
     .grid {
-      max-width: 960px;
+      max-width: 1300px;
       margin: 0 auto;
-      padding: 0 20px 48px;
+      padding: 0 24px 48px;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
     }
-    @media (max-width: 680px) {
+    @media (max-width: 760px) {
       .grid { grid-template-columns: 1fr; }
     }
 
-    /* CARD */
+    /* ── CARD ── */
     .card {
       background: var(--bg2);
       border: 1px solid var(--border);
@@ -180,72 +185,35 @@
     }
     .ticker { font-size: 1.45rem; font-weight: 800; color: var(--text); letter-spacing: -0.5px; }
     .exchange-badge {
-      font-size: 0.7rem;
-      font-weight: 600;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--text3);
-      padding: 2px 8px;
-      border-radius: 20px;
-      letter-spacing: 0.5px;
+      font-size: 0.7rem; font-weight: 600;
+      background: var(--bg); border: 1px solid var(--border);
+      color: var(--text3); padding: 2px 8px; border-radius: 20px; letter-spacing: 0.5px;
     }
     .company-name { font-size: 0.9rem; color: var(--text2); font-weight: 500; margin-right: auto; }
     .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .tag {
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 20px;
-      border: 1px solid;
-    }
+    .tag { font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; border: 1px solid; }
     .tag.support { background: rgba(38,194,129,0.1); color: var(--green); border-color: rgba(38,194,129,0.3); }
-    .tag.retest { background: rgba(88,166,255,0.1); color: var(--accent); border-color: rgba(88,166,255,0.3); }
-    .tag.range { background: rgba(240,136,62,0.1); color: var(--orange); border-color: rgba(240,136,62,0.3); }
-    .tag.fib { background: rgba(188,140,255,0.1); color: var(--purple); border-color: rgba(188,140,255,0.3); }
-    .tag.ratio { background: rgba(227,179,65,0.1); color: var(--yellow); border-color: rgba(227,179,65,0.3); }
-    .tag.short { background: rgba(248,81,73,0.1); color: var(--red); border-color: rgba(248,81,73,0.3); }
-    .tag.misc { background: var(--bg3); color: var(--text2); border-color: var(--border); }
+    .tag.retest  { background: rgba(88,166,255,0.1); color: var(--accent); border-color: rgba(88,166,255,0.3); }
+    .tag.range   { background: rgba(240,136,62,0.1); color: var(--orange); border-color: rgba(240,136,62,0.3); }
+    .tag.fib     { background: rgba(188,140,255,0.1); color: var(--purple); border-color: rgba(188,140,255,0.3); }
+    .tag.ratio   { background: rgba(227,179,65,0.1); color: var(--yellow); border-color: rgba(227,179,65,0.3); }
+    .tag.short   { background: rgba(248,81,73,0.1); color: var(--red); border-color: rgba(248,81,73,0.3); }
+    .tag.misc    { background: var(--bg3); color: var(--text2); border-color: var(--border); }
 
     /* CHART */
     .chart-wrap { position: relative; background: #000; }
     .chart-img { width: 100%; display: block; cursor: zoom-in; transition: opacity 0.2s; }
     .chart-img:hover { opacity: 0.92; }
-    .chart-hint {
-      text-align: center;
-      font-size: 0.72rem;
-      color: var(--text3);
-      padding: 5px 0;
-      background: var(--bg3);
-      border-bottom: 1px solid var(--border);
-    }
-    .chart-placeholder {
-      height: 180px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text3);
-      font-size: 2rem;
-    }
+    .chart-hint { text-align: center; font-size: 0.72rem; color: var(--text3); padding: 5px 0; background: var(--bg3); border-bottom: 1px solid var(--border); }
 
-    /* TV BUTTON — prominent, inside card */
-    .card-footer-bar {
-      padding: 10px 18px;
-      border-bottom: 1px solid var(--border);
-      background: var(--bg3);
-    }
+    /* TV BUTTON */
+    .card-footer-bar { padding: 10px 18px; border-bottom: 1px solid var(--border); background: var(--bg3); }
     .tv-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      display: inline-flex; align-items: center; gap: 6px;
       background: linear-gradient(135deg, var(--accent2), #388bfd);
-      color: #fff;
-      text-decoration: none;
-      padding: 7px 18px;
-      border-radius: 6px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      transition: all 0.2s;
-      box-shadow: 0 2px 8px rgba(88,166,255,0.2);
+      color: #fff; text-decoration: none; padding: 7px 18px;
+      border-radius: 6px; font-size: 0.88rem; font-weight: 600;
+      transition: all 0.2s; box-shadow: 0 2px 8px rgba(88,166,255,0.2);
     }
     .tv-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(88,166,255,0.4); }
 
@@ -253,61 +221,31 @@
     .analysis { padding: 14px 18px; font-size: 0.93rem; line-height: 1.85; color: var(--text2); flex: 1; }
 
     /* LIGHTBOX */
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.93);
-      z-index: 9999;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      cursor: zoom-out;
-    }
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.93); z-index: 9999; align-items: center; justify-content: center; padding: 20px; cursor: zoom-out; }
     .lightbox.active { display: flex; }
-    .lightbox img { max-width: 100%; max-height: 90vh; border-radius: 8px; box-shadow: 0 0 60px rgba(0,0,0,0.8); }
-    .lb-close {
-      position: fixed; top: 20px; left: 20px; color: #fff; font-size: 2rem;
-      cursor: pointer; opacity: 0.7; transition: opacity 0.2s; background: none; border: none; line-height: 1;
-    }
+    .lightbox img { max-width: 100%; max-height: 90vh; border-radius: 8px; }
+    .lb-close { position: fixed; top: 20px; left: 20px; color: #fff; font-size: 2rem; cursor: pointer; opacity: 0.7; background: none; border: none; line-height: 1; }
     .lb-close:hover { opacity: 1; }
 
     /* FOOTER */
-    .footer {
-      text-align: center; padding: 30px 20px; color: var(--text3);
-      font-size: 0.82rem; border-top: 1px solid var(--border);
-    }
+    .footer { text-align: center; padding: 30px 20px; color: var(--text3); font-size: 0.82rem; border-top: 1px solid var(--border); }
   </style>
 </head>
 <body>
 
+<!-- HERO — date, stats, watchlist all inside -->
 <header class="hero">
-  <div class="hero-date">📅 2026-06-29 · סריקת שוק שבועית</div>
   <h1>🔥 מניות חמות השבוע</h1>
-  <p class="hero-sub">CyclesTrading · ניתוח טכני שבועי</p>
+  <div class="subtitle">2026-06-29 · סריקת שוק שבועית</div>
+  <div class="stats-row">
+    <div class="stat-chip"><span>8</span>מניות</div>
+    <div class="stat-chip"><span class="green">8</span>לונג</div>
+    <div class="stat-chip"><span class="red">0</span>שורט</div>
+  </div>
+  <a href="https://www.tradingview.com/watchlists/337322322/" target="_blank" class="tv-watchlist-btn">📊 רשימת מעקב בטריידינג וויו</a>
 </header>
 
-<div class="stats-bar">
-  <div class="stat">
-    <span class="stat-num">8</span>
-    <span class="stat-label">מניות</span>
-  </div>
-  <div class="stat-divider"></div>
-  <div class="stat">
-    <span class="stat-num green">8</span>
-    <span class="stat-label">לונג</span>
-  </div>
-  <div class="stat-divider"></div>
-  <div class="stat">
-    <span class="stat-num red">0</span>
-    <span class="stat-label">שורט</span>
-  </div>
-</div>
-
-<div class="watchlist-wrap">
-  <a href="https://www.tradingview.com/watchlists/337322322/" target="_blank" class="watchlist-btn">📊 רשימת מעקב בטריידינג וויו</a>
-</div>
-
+<!-- PREAMBLE -->
 <div class="preamble-wrap">
   <div class="preamble">
     <p>שבוע חדש, רשימת מניות חדשה.</p>
@@ -319,15 +257,17 @@
   </div>
 </div>
 
+<!-- DISCLAIMER -->
 <div class="disclaimer">
   <div class="disclaimer-inner">
     <strong>⚠️ הצהרת אחריות:</strong> כל המניות כאן הן לצורכי לימוד ומחקר בלבד ואינן מהוות המלצת השקעה. השקעה בשוק ההון כרוכה בסיכון לאובדן הון. יש לבצע מחקר עצמאי לפני כל החלטת השקעה.
   </div>
 </div>
 
+<!-- US STOCKS -->
 <div class="section-title">🇺🇸 מניות אמריקאיות</div>
 <div class="grid">
-    <div class="card" data-group="us">
+    <div class="card">
       <div class="card-header">
         <div class="ticker-row">
           <span class="ticker">PNR</span>
@@ -345,7 +285,7 @@
       </div>
       <div class="analysis">המניה ממשיכה להיות רלוונטית גם השבוע. המחיר מתבסס על אזור התמיכה שבין 73 ל-76 דולר, בתוך מבנה דשדוש רחב. יחס הסיכוי-סיכון עומד על כ-1:2.5 עד אמצע הטווח וכמעט 1:5 עד השיא האחרון.</div>
     </div>
-    <div class="card" data-group="us">
+    <div class="card">
       <div class="card-header">
         <div class="ticker-row">
           <span class="ticker">NEM</span>
@@ -363,7 +303,7 @@
       </div>
       <div class="analysis">המניה חזרה לרמת תמיכה משמעותית שהוכיחה את עצמה בעבר. בפעמים הקודמות האזור הזה סיפק תיקון יפה כלפי מעלה, ולכן כל עוד התמיכה לא נשברת, אין סיבה להניח שהפעם תהיה שונה. יעד ראשון מעניק יחס סיכוי-סיכון של כ-1:4, ועד השיא ההיסטורי היחס מגיע לכ-1:6.</div>
     </div>
-    <div class="card" data-group="us">
+    <div class="card">
       <div class="card-header">
         <div class="ticker-row">
           <span class="ticker">GOOGL</span>
@@ -381,7 +321,7 @@
       </div>
       <div class="analysis">לאחר ירידות חדות בשבוע האחרון, המחיר הגיע לאזור תמיכה משמעותי המשתלב עם תיקון 50% פיבונאצ'י. ביום שישי נרשם מחזור מסחר גבוה במיוחד בדיוק על רמת התמיכה, סימן שכדאי לעקוב אחריו. יחס הסיכוי-סיכון עומד על כ-1:3.</div>
     </div>
-    <div class="card" data-group="us">
+    <div class="card">
       <div class="card-header">
         <div class="ticker-row">
           <span class="ticker">AAPL</span>
@@ -399,7 +339,7 @@
       </div>
       <div class="analysis">בדומה לגוגל, גם אפל חזרה לרמת תמיכה משמעותית. ביום שישי נרשם מחזור גבוה מאוד על אזור התמיכה, מה שמייצר סטאפ מעניין. הסטופ יחסית קצר ולכן חשוב לנהל את העסקה בהתאם.</div>
     </div>
-    <div class="card" data-group="us">
+    <div class="card">
       <div class="card-header">
         <div class="ticker-row">
           <span class="ticker">SEDG</span>
@@ -417,7 +357,7 @@
       </div>
       <div class="analysis">המחיר חוזר לרמת תמיכה לאחר ארבעה שבועות של ירידות עם מחזורים שהולכים ופוחתים, דבר שמעיד על היחלשות המוכרים. התמיכה משתלבת עם תיקון 61.8% פיבונאצ'י ויוצרת סטאפ ריטסט קלאסי. יעד הרווח לשיא האחרון מעניק יחס סיכוי-סיכון של כ-1:4.5.</div>
     </div>
-    <div class="card" data-group="us">
+    <div class="card">
       <div class="card-header">
         <div class="ticker-row">
           <span class="ticker">CF</span>
@@ -438,9 +378,10 @@
 
 </div>
 
+<!-- IL STOCKS -->
 <div class="section-title">🇮🇱 מניות מהשוק הישראלי</div>
 <div class="grid">
-    <div class="card" data-group="il">
+    <div class="card">
       <div class="card-header">
         <div class="ticker-row">
           <span class="ticker">DLEKG</span>
@@ -458,7 +399,7 @@
       </div>
       <div class="analysis">כדאי לשים לב במיוחד לגרף החודשי. המניה מבצעת ריטסט לשיא ההיסטורי משנת 2014, שהפך כעת לאזור תמיכה משמעותי. חשוב לזכור שהמניה מושפעת מאוד ממחירי הנפט, ולכן כדאי לעקוב גם אחרי ההתפתחויות בשוק האנרגיה.</div>
     </div>
-    <div class="card" data-group="il">
+    <div class="card">
       <div class="card-header">
         <div class="ticker-row">
           <span class="ticker">ASHG</span>
